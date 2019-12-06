@@ -25,10 +25,14 @@ class ResponseMacroServiceProvider extends ServiceProvider
     public function boot()
     {
         Response::macro('success', function ($code = 200, $data = [], $msg = 'ok') {
+            if (is_array($code)) {
+                $data = $code;
+                $code = 200;
+            }
             $content = array(
                 'code' => $code,
-                'data' => $data ?: (object)[],
-                'msg' => $msg
+                'msg' => $msg,
+                'data' => $data ?: (object)[]
             );
             return response()->json($content);
         });
@@ -36,8 +40,9 @@ class ResponseMacroServiceProvider extends ServiceProvider
         Response::macro('error', function ($code = 40000, $msg = '请求失败', $data = []) {
             $content = array(
                 'code' => $code,
-                'data' => $data ?: (object)[],
-                'msg' => $msg
+                'msg' => $msg,
+                'data' => $data ?: (object)[]
+
             );
             return response()->json($content);
         });
