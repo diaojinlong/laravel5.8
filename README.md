@@ -2,11 +2,17 @@
 基于PHP Laravel5.8框架，增加了微信、阿里云OSS、解决api跨域、JWT、增加自定义函数等，克隆后composer install 就可以直接开发。
 
 #安装并运行
+
 1、克隆
+
 git clone https://github.com/diaojinlong/laravel5.8.git
+
 2、安装扩展包
+
 composer install
-3、修改.evn文件
+
+3、修改.env文件
+
 4、将站点域名指定到public目录即可访问
 
 
