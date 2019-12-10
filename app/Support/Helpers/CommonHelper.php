@@ -29,6 +29,7 @@ if (!function_exists('error_msg')) {
             40005 => '数据已删除',
             40006 => '数据不可编辑',
             40007 => '文件类型非法',
+            40008 => '访问频繁',
         );
         if (isset($msg[$code])) {
             return array($code, $msg[$code]);
@@ -37,3 +38,37 @@ if (!function_exists('error_msg')) {
         }
     }
 }
+
+if (!function_exists('sql_start')) {
+    /**
+     * 开启sql日志
+     * @return mixed
+     */
+    function sql_start()
+    {
+        \DB::connection()->enableQueryLog();
+    }
+}
+
+if (!function_exists('sql_get')) {
+    /**
+     * 获取sql日志
+     * @return mixed
+     */
+    function sql_get()
+    {
+        return \DB::connection()->getQueryLog();
+    }
+}
+
+if (!function_exists('sql_dd')) {
+    /**
+     * 打印sql日志
+     * @return mixed
+     */
+    function sql_dd()
+    {
+        dd(sql_get());
+    }
+}
+
