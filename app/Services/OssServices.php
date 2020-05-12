@@ -8,7 +8,7 @@ use Exception;
 use DateTime;
 
 
-class OSS
+class OssServices
 {
 
     /* 城市名称：
@@ -59,7 +59,7 @@ class OSS
      */
     public static function publicUpload($bucketName, $ossKey, $filePath, $options = [])
     {
-        $oss = new OSS();
+        $oss = new self();
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->uploadFile($ossKey, $filePath, $options);
     }
@@ -73,7 +73,7 @@ class OSS
      */
     public static function privateUpload($bucketName, $ossKey, $filePath, $options = [])
     {
-        $oss = new OSS(true);
+        $oss = new self(true);
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->uploadFile($ossKey, $filePath, $options);
     }
@@ -88,7 +88,7 @@ class OSS
      */
     public static function publicUploadContent($bucketName, $ossKey, $content, $options = [])
     {
-        $oss = new OSS();
+        $oss = new self();
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->uploadContent($ossKey, $content, $options);
     }
@@ -102,7 +102,7 @@ class OSS
      */
     public static function privateUploadContent($bucketName, $ossKey, $content, $options = [])
     {
-        $oss = new OSS(true);
+        $oss = new self(true);
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->uploadContent($ossKey, $content, $options);
     }
@@ -116,7 +116,7 @@ class OSS
      */
     public static function publicDeleteObject($bucketName, $ossKey)
     {
-        $oss = new OSS();
+        $oss = new self();
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->deleteObject($bucketName, $ossKey);
     }
@@ -129,7 +129,7 @@ class OSS
      */
     public static function privateDeleteObject($bucketName, $ossKey)
     {
-        $oss = new OSS(true);
+        $oss = new self(true);
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->deleteObject($bucketName, $ossKey);
     }
@@ -147,46 +147,46 @@ class OSS
 
     public function copyObject($sourceBuckt, $sourceKey, $destBucket, $destKey)
     {
-        $oss = new OSS();
+        $oss = new self();
         return $oss->ossClient->copyObject($sourceBuckt, $sourceKey, $destBucket, $destKey);
     }
 
     public function moveObject($sourceBuckt, $sourceKey, $destBucket, $destKey)
     {
-        $oss = new OSS();
+        $oss = new self();
         return $oss->ossClient->moveObject($sourceBuckt, $sourceKey, $destBucket, $destKey);
     }
 
     // 获取公开文件的 URL
     public static function getPublicObjectURL($bucketName, $ossKey)
     {
-        $oss = new OSS();
+        $oss = new self();
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->getPublicUrl($ossKey);
     }
     // 获取私有文件的URL，并设定过期时间，如 \DateTime('+1 day')
     public static function getPrivateObjectURLWithExpireTime($bucketName, $ossKey, DateTime $expire_time)
     {
-        $oss = new OSS();
+        $oss = new self();
         $oss->ossClient->setBucket($bucketName);
         return $oss->ossClient->getUrl($ossKey, $expire_time);
     }
 
     public static function createBucket($bucketName)
     {
-        $oss = new OSS();
+        $oss = new self();
         return $oss->ossClient->createBucket($bucketName);
     }
 
     public static function getAllObjectKey($bucketName)
     {
-        $oss = new OSS();
+        $oss = new self();
         return $oss->ossClient->getAllObjectKey($bucketName);
     }
 
     public static function getObjectMeta($bucketName, $ossKey)
     {
-        $oss = new OSS();
+        $oss = new self();
         return $oss->ossClient->getObjectMeta($bucketName, $ossKey);
     }
 

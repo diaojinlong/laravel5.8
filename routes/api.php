@@ -31,7 +31,7 @@ Route::post('/upload', function (Request $request) {
     $fileName = md5(uniqid("", true) . rand(100000, 666666)) . '.' . $extension;
     $content = file_get_contents($filePath);
     $saveName = $savePath . '/' . $fileName;
-    \App\Services\OSS::publicUploadContent('chaoshigouwu', $saveName, $content);
+    \App\Services\OssServices::publicUploadContent('your_bucket_name', $saveName, $content);
     $data = array(
         'url' => env('ALI_OSS_HOST') . '/' . $saveName,
         'path' => '/' . $saveName
