@@ -15,8 +15,7 @@
         "johnlui/aliyun-oss": "~2.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "overtrue/laravel-wechat": "~5.0",
-        "predis/predis": "^1.1"
+        "overtrue/laravel-wechat": "~5.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
