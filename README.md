@@ -17,7 +17,11 @@ composer install
 
 复制.env.example改名为.env
 
-4、将站点域名指定到public目录即可访问
+4、重置laravel APP_KEY
+
+php artisan key:generate
+
+5、将站点域名指定到public目录即可访问
 
 
 #composer包
