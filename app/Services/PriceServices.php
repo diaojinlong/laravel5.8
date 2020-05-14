@@ -8,7 +8,7 @@ class PriceServices
     /**
      * PHP精确计算  主要用于货币的计算用
      * @param $n1 第一个数
-     * @param $symbol 计算符号 + - * / %
+     * @param $symbol 计算符号 + - * / % 
      * @param $n2 第二个数
      * @param string $scale 精度 默认为小数点后两位
      * @return  string
